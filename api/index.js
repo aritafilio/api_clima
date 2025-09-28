@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const axios = require('axios');
 
+<<<<<<< HEAD
 // 👇 NUEVO: persistencia en JSON
 const fs = require('fs');
 const path = require('path');
@@ -24,6 +25,8 @@ function saveUsers(list) {
   fs.writeFileSync(USERS_DB_PATH, JSON.stringify(list, null, 2));
 }
 
+=======
+>>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477
 const app = express();
 app.use(helmet());
 app.use(cors({ origin: true, credentials: true }));
@@ -32,8 +35,12 @@ app.use(express.json({ limit: '100kb' }));
 const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
 app.use(['/login','/register'], authLimiter);
 
+<<<<<<< HEAD
 
 let users = loadUsers(); 
+=======
+const users = []; // { email, passwordHash }
+>>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477
 
 const { PORT=3001, JWT_SECRET, JWT_EXPIRES='1h', OPENWEATHER_API_KEY } = process.env;
 if (!JWT_SECRET) throw new Error('Missing JWT_SECRET in .env');
@@ -69,7 +76,10 @@ app.post('/register', async (req, res) => {
     }
     const passwordHash = await bcrypt.hash(password, 10);
     users.push({ email, passwordHash });
+<<<<<<< HEAD
     saveUsers(users);
+=======
+>>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477
     return res.status(201).json({ message: 'Usuario creado' });
   } catch {
     return res.status(500).json({ error: 'Error al registrar' });
@@ -90,6 +100,7 @@ app.get('/me', authMiddleware, (req, res) => {
   res.json({ email: req.user.email });
 });
 
+<<<<<<< HEAD
 app.get('/weather/coords', authMiddleware, async (req, res) => {
   try {
     const lat = parseFloat(req.query.lat);
@@ -102,6 +113,13 @@ app.get('/weather/coords', authMiddleware, async (req, res) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}&units=metric&lang=es`;
     const { data } = await axios.get(url, { timeout: 8000 });
 
+=======
+app.get('/weather', authMiddleware, async (req, res) => {
+  try {
+    const city = String(req.query.q || 'Tehuacan');
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${OPENWEATHER_API_KEY}&units=metric&lang=es`;
+    const { data } = await axios.get(url, { timeout: 8000 });
+>>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477
     res.json({
       name: data?.name,
       temp: data?.main?.temp,
@@ -109,7 +127,11 @@ app.get('/weather/coords', authMiddleware, async (req, res) => {
     });
   } catch (e) {
     const status = e?.response?.status || 500;
+<<<<<<< HEAD
     res.status(status).json({ error: 'Fallo al consultar clima por coordenadas' });
+=======
+    res.status(status).json({ error: 'Fallo al consultar clima' });
+>>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477
   }
 });
 

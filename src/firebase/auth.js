@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Reemplaza Firebase por JWT propio
 import axios from 'axios';
 
@@ -72,3 +73,43 @@ function _notify() {
   const user = getUser();
   listeners.forEach(cb => cb(user));
 }
+=======
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged 
+} from 'firebase/auth';
+import { auth } from './config';
+
+export const registerUser = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    return { success: true, user: userCredential.user };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
+
+export const loginUser = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return { success: true, user: userCredential.user };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
+
+export const logoutUser = async () => {
+  try {
+    await signOut(auth);
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
+
+export const onAuthStateChange = (callback) => {
+  return onAuthStateChanged(auth, callback);
+};
+>>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477

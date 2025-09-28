@@ -151,6 +151,7 @@ const Weather = ({ user }) => {
               <span className="detail-value">
                 {weather.wind?.speed != null ? `${weather.wind.speed} m/s` : "No disponible"}
               </span>
+              <span className="detail-value">{weather.wind.speed} m/s</span>
             </div>
             <div className="detail-item">
               <span className="detail-label">💧 Humedad</span>
