@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { registerUser } from '../firebase/auth';
 import './Auth.css';
 
+<<<<<<< HEAD
 const Register = ({ onRegisterSuccess }) => {
+=======
+const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
+>>>>>>> f8111109a (encriptacion)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -16,16 +20,28 @@ const Register = ({ onRegisterSuccess }) => {
       ...formData,
       [e.target.name]: e.target.value
     });
+<<<<<<< HEAD
     setError(''); 
+=======
+    setError(''); // limpia error al cambiar input
+>>>>>>> f8111109a (encriptacion)
   };
 
   const validateForm = () => {
     if (formData.password !== formData.confirmPassword) {
+<<<<<<< HEAD
       setError('Las contraseñas no coinciden');
       return false;
     }
     if (formData.password.length < 6) {
       setError('La contraseña debe tener al menos 6 caracteres');
+=======
+      setError('❌ Las contraseñas no coinciden');
+      return false;
+    }
+    if (formData.password.length < 6) {
+      setError('❌ La contraseña debe tener al menos 6 caracteres');
+>>>>>>> f8111109a (encriptacion)
       return false;
     }
     return true;
@@ -41,6 +57,7 @@ const Register = ({ onRegisterSuccess }) => {
       return;
     }
 
+<<<<<<< HEAD
     const result = await registerUser(formData.email, formData.password);
     
     if (result.success) {
@@ -49,6 +66,23 @@ const Register = ({ onRegisterSuccess }) => {
       setError(result.error);
     }
     
+=======
+    try {
+      const result = await registerUser(formData.email, formData.password);
+
+      if (result.success) {
+        onRegisterSuccess(result.user);
+      } else {
+        // Muestra el error exacto que viene del backend
+        setError(`❌ Error: ${result.error}`);
+      }
+    } catch (err) {
+      // Error inesperado de la petición
+      console.error('Error en registro:', err);
+      setError('❌ Error inesperado al registrar');
+    }
+
+>>>>>>> f8111109a (encriptacion)
     setLoading(false);
   };
 
@@ -106,10 +140,23 @@ const Register = ({ onRegisterSuccess }) => {
             {loading ? 'Registrando...' : 'Registrarse'}
           </button>
         </form>
+<<<<<<< HEAD
+=======
+
+        <div className="auth-footer">
+          <p>¿Ya tienes cuenta?</p>
+          <button type="button" onClick={onSwitchToLogin}>
+            Iniciar Sesión
+          </button>
+        </div>
+>>>>>>> f8111109a (encriptacion)
       </div>
     </div>
   );
 };
 
 export default Register;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f8111109a (encriptacion)

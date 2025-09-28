@@ -148,9 +148,12 @@ const Weather = ({ user }) => {
           <div className="weather-details">
             <div className="detail-item">
               <span className="detail-label">💨 Viento</span>
+<<<<<<< HEAD
               <span className="detail-value">
                 {weather.wind?.speed != null ? `${weather.wind.speed} m/s` : "No disponible"}
               </span>
+=======
+>>>>>>> f8111109a (encriptacion)
               <span className="detail-value">{weather.wind.speed} m/s</span>
             </div>
             <div className="detail-item">

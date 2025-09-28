@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { loginUser } from '../firebase/auth';
 import './Auth.css';
 
+<<<<<<< HEAD
 const Login = ({ onLoginSuccess }) => {
+=======
+const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
+>>>>>>> f8111109a (encriptacion)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -75,10 +79,26 @@ const Login = ({ onLoginSuccess }) => {
             {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
           </button>
         </form>
+<<<<<<< HEAD
+=======
+
+        <div className="auth-footer">
+          <p>¿No tienes cuenta?</p>
+          <button 
+            type="button"  
+            onClick={onSwitchToRegister}
+          >
+            Registrarse
+          </button>
+        </div>
+>>>>>>> f8111109a (encriptacion)
       </div>
     </div>
   );
 };
 
 export default Login;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f8111109a (encriptacion)

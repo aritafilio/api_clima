@@ -5,6 +5,7 @@ import './Auth.css';
 
 const AuthPage = ({ onAuthSuccess }) => {
   const [isLogin, setIsLogin] = useState(true);
+<<<<<<< HEAD
 //xd
   return (
     <div>
@@ -14,6 +15,24 @@ const AuthPage = ({ onAuthSuccess }) => {
         <Register onRegisterSuccess={onAuthSuccess} />
       )}
       
+=======
+
+  return (
+    <div className="auth-page">
+      {isLogin ? (
+        <Login 
+          onLoginSuccess={onAuthSuccess} 
+          onSwitchToRegister={() => setIsLogin(false)} 
+        />
+      ) : (
+        <Register 
+          onRegisterSuccess={onAuthSuccess} 
+          onSwitchToLogin={() => setIsLogin(true)} 
+        />
+      )}
+
+      {/* Alternador extra por si quieres mantenerlo */}
+>>>>>>> f8111109a (encriptacion)
       <div className="auth-toggle">
         <p>
           {isLogin ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?'}
@@ -27,4 +46,7 @@ const AuthPage = ({ onAuthSuccess }) => {
 };
 
 export default AuthPage;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f8111109a (encriptacion)

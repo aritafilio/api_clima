@@ -1,5 +1,8 @@
 import axios from 'axios';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f8111109a (encriptacion)
 import { getToken } from '../firebase/auth';
 
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3001';
@@ -25,6 +28,7 @@ export const getWeatherByCity = async (city) => {
       return { success: false, error: 'Sin conexión a internet. Verifica tu conexión.' };
     } else {
       return { success: false, error: 'Ocurrió un error inesperado.' };
+<<<<<<< HEAD
 =======
 
 const API_KEY = '7b3b9c63037ddd97be0175dc1c71625e';
@@ -58,11 +62,14 @@ export const getWeatherByCity = async (city) => {
         error: 'Error inesperado al obtener datos del clima' 
       };
 >>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477
+=======
+>>>>>>> f8111109a (encriptacion)
     }
   }
 };
 
 export const getWeatherByCoords = async (lat, lon) => {
+<<<<<<< HEAD
   try {
 <<<<<<< HEAD
     const token = getToken();
@@ -149,3 +156,8 @@ export const getForecast = async (city) => {
   }
 };
 >>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477
+=======
+  // (opcional) podrías crear en backend /weather/coords que reciba lat/lon
+  return { success: false, error: 'No implementado en backend. Usa búsqueda por ciudad.' };
+};
+>>>>>>> f8111109a (encriptacion)

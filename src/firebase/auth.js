@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f8111109a (encriptacion)
 // Reemplaza Firebase por JWT propio
 import axios from 'axios';
 
@@ -73,6 +76,7 @@ function _notify() {
   const user = getUser();
   listeners.forEach(cb => cb(user));
 }
+<<<<<<< HEAD
 =======
 import { 
   createUserWithEmailAndPassword, 
@@ -113,3 +117,5 @@ export const onAuthStateChange = (callback) => {
   return onAuthStateChanged(auth, callback);
 };
 >>>>>>> 1282151dd832ab1f839c20cd8ea4bff7b75e4477
+=======
+>>>>>>> f8111109a (encriptacion)
